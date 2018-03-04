@@ -65,6 +65,10 @@ download:
   source:           "https://github.com/twbs/bootstrap/archive/v4.0.0.zip"
   dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0/bootstrap-4.0.0-dist.zip"
 
+download:
+  source:           "https://github.com/twbs/bootstrap/archive/v4.0.0-beta.zip"
+  dist:             "https://github.com/twbs/bootstrap/releases/download/v4.0.0-beta/bootstrap-4.0.0-beta-dist.zip"
+
 cdn:
   # See https://www.srihash.org for info on how to generate the hashes
   css:              "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
