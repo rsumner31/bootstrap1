@@ -10,7 +10,9 @@ toc: true
 
 Bootstrap's form controls expand on [our Rebooted form styles]({{ site.baseurl }}/docs/{{ site.docs_version }}/content/reboot/#forms) with classes. Use these classes to opt into their customized displays for a more consistent rendering across browsers and devices. The example form below demonstrates common HTML form elements that receive updated styles from Bootstrap with additional classes.
 
-Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `type` attribute**.
+Be sure to use an appropriate `type` attribute on all inputs (e.g., `email` for email address or `number` for numerical information).
+
+### Example
 
 {% example html %}
 <form>
@@ -82,6 +84,8 @@ Remember, since Bootstrap utilizes the HTML5 doctype, **all inputs must have a `
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endexample %}
+
+### Supported controls
 
 Below is a complete list of the specific form controls supported by Bootstrap and the classes that customize them. Additional documentation is available for each group.
 
@@ -161,90 +165,25 @@ Below is a complete list of the specific form controls supported by Bootstrap an
 
 ### Textual inputs
 
-Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type`.
+Here are examples of `.form-control` applied to each textual HTML5 `<input>` `type` (meaning, almost everything except the file, checkbox, and radio inputs).
 
-{% example html %}
-<div class="form-group row">
-  <label for="example-text-input" class="col-2 col-form-label">Text</label>
-  <div class="col-10">
-    <input class="form-control" type="text" value="Artisanal kale" id="example-text-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-search-input" class="col-2 col-form-label">Search</label>
-  <div class="col-10">
-    <input class="form-control" type="search" value="How do I shoot web" id="example-search-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-email-input" class="col-2 col-form-label">Email</label>
-  <div class="col-10">
-    <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-url-input" class="col-2 col-form-label">URL</label>
-  <div class="col-10">
-    <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-tel-input" class="col-2 col-form-label">Telephone</label>
-  <div class="col-10">
-    <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-password-input" class="col-2 col-form-label">Password</label>
-  <div class="col-10">
-    <input class="form-control" type="password" value="hunter2" id="example-password-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-number-input" class="col-2 col-form-label">Number</label>
-  <div class="col-10">
-    <input class="form-control" type="number" value="42" id="example-number-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-datetime-local-input" class="col-2 col-form-label">Date and time</label>
-  <div class="col-10">
-    <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-date-input" class="col-2 col-form-label">Date</label>
-  <div class="col-10">
-    <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-month-input" class="col-2 col-form-label">Month</label>
-  <div class="col-10">
-    <input class="form-control" type="month" value="2011-08" id="example-month-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-week-input" class="col-2 col-form-label">Week</label>
-  <div class="col-10">
-    <input class="form-control" type="week" value="2011-W33" id="example-week-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-time-input" class="col-2 col-form-label">Time</label>
-  <div class="col-10">
-    <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-  </div>
-</div>
-<div class="form-group row">
-  <label for="example-color-input" class="col-2 col-form-label">Color</label>
-  <div class="col-10">
-    <input class="form-control" type="color" value="#563d7c" id="example-color-input">
-  </div>
-</div>
-{% endexample %}
+| Type | Example |
+| --- | --- |
+| `text` | <input class="form-control" type="text" value="Artisanal kale" id="example-text-input"> |
+| `search` | <input class="form-control" type="search" value="How do I shoot web" id="example-search-input"> |
+| `email` | <input class="form-control" type="email" value="bootstrap@example.com" id="example-email-input"> |
+| `url` | <input class="form-control" type="url" value="https://getbootstrap.com" id="example-url-input"> |
+| `tel` | <input class="form-control" type="tel" value="1-(555)-555-5555" id="example-tel-input"> |
+| `password` | <input class="form-control" type="password" value="hunter2" id="example-password-input"> |
+| `number` | <input class="form-control" type="number" value="42" id="example-number-input"> |
+| `datetime-local` | <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00" id="example-datetime-local-input"> |
+| `date` | <input class="form-control" type="date" value="2011-08-19" id="example-date-input"> |
+| `month` | <input class="form-control" type="month" value="2011-08" id="example-month-input"> |
+| `week` | <input class="form-control" type="week" value="2011-W33" id="example-week-input"> |
+| `time` | <input class="form-control" type="time" value="13:45:00" id="example-time-input"> |
+| `color` | <input class="form-control" type="color" value="#563d7c" id="example-color-input"> |
 
-## Form layouts
+## Layout
 
 Since Bootstrap applies `display: block` and `width: 100%` to almost all our form controls, forms will by default stack vertically. Additional classes can be used to vary this layout on a per-form basis.
 
@@ -261,6 +200,147 @@ The `.form-group` class is the easiest way to add some structure to forms. Its o
   <div class="form-group">
     <label class="form-control-label" for="formGroupExampleInput2">Another label</label>
     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+  </div>
+</form>
+{% endexample %}
+
+### Grid
+
+{% example html %}
+<form>
+  <div class="row gutters-sm">
+    <div class="col">
+      <input type="text" class="form-control" placeholder="First name">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Last name">
+    </div>
+  </div>
+</form>
+{% endexample html %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm">
+    <div class="col-7">
+      <input type="text" class="form-control" placeholder="City">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="State">
+    </div>
+    <div class="col">
+      <input type="text" class="form-control" placeholder="Zip">
+    </div>
+  </div>
+</form>
+{% endexample html %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col-auto">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-sm-3">
+      <label class="sr-only" for="inlineFormInput">Name</label>
+      <input type="text" class="form-control mb-2 mb-sm-0" id="inlineFormInput" placeholder="Jane Doe">
+    </div>
+    <div class="col-sm-3">
+      <label class="sr-only" for="inlineFormInputGroup">Username</label>
+      <div class="input-group mb-2 mb-sm-0">
+        <div class="input-group-addon">@</div>
+        <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Username">
+      </div>
+    </div>
+    <div class="col-auto">
+      <div class="form-check mb-2 mb-sm-0">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox"> Remember me
+        </label>
+      </div>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+{% endexample %}
+
+{% example html %}
+<form>
+  <div class="row gutters-sm align-items-center">
+    <div class="col-auto">
+      <label class="mr-sm-2" for="inlineFormCustomSelect">Preference</label>
+      <select class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <div class="col-auto">
+      <label class="custom-control custom-checkbox mb-2 mr-sm-2 mb-sm-0">
+        <input type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Remember my preference</span>
+      </label>
+    </div>
+    <div class="col-auto">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
   </div>
 </form>
 {% endexample %}
