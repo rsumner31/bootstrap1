@@ -1,16 +1,16 @@
-/* global Popper */
-
+import $ from 'jquery'
+import Popper from 'popper.js'
 import Util from './util'
 
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v4.0.0-alpha.6): dropdown.js
+ * Bootstrap (v4.0.0-beta): dropdown.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
-const Dropdown = (($) => {
+const Dropdown = (() => {
 
   /**
    * Check for Popper dependency
@@ -27,7 +27,7 @@ const Dropdown = (($) => {
    */
 
   const NAME                     = 'dropdown'
-  const VERSION                  = '4.0.0-alpha.6'
+  const VERSION                  = '4.0.0-beta'
   const DATA_KEY                 = 'bs.dropdown'
   const EVENT_KEY                = `.${DATA_KEY}`
   const DATA_API_KEY             = '.data-api'
@@ -75,14 +75,12 @@ const Dropdown = (($) => {
   }
 
   const Default = {
-    placement   : AttachmentMap.BOTTOM,
     offset      : 0,
     flip        : true
   }
 
   const DefaultType = {
-    placement   : 'string',
-    offset      : '(number|string)',
+    offset      : '(number|string|function)',
     flip        : 'boolean'
   }
 
@@ -96,10 +94,11 @@ const Dropdown = (($) => {
   class Dropdown {
 
     constructor(element, config) {
-      this._element = element
-      this._popper  = null
-      this._config = this._getConfig(config)
-      this._menu = this._getMenuElement()
+      this._element  = element
+      this._popper   = null
+      this._config   = this._getConfig(config)
+      this._menu     = this._getMenuElement()
+      this._inNavbar = this._detectNavbar()
 
       this._addEventListeners()
     }
@@ -153,17 +152,7 @@ const Dropdown = (($) => {
           element = parent
         }
       }
-      this._popper = new Popper(element, this._menu, {
-        placement : this._getPlacement(),
-        modifiers : {
-          offset : {
-            offset : this._config.offset
-          },
-          flip : {
-            enabled : this._config.flip
-          }
-        }
-      })
+      this._popper = new Popper(element, this._menu, this._getPopperConfig())
 
       // if this is a touch-enabled device we add extra
       // empty mouseover listeners to the body's immediate children;
@@ -195,6 +184,7 @@ const Dropdown = (($) => {
     }
 
     update() {
+      this._inNavbar = this._detectNavbar()
       if (this._popper !== null) {
         this._popper.scheduleUpdate()
       }
@@ -211,11 +201,6 @@ const Dropdown = (($) => {
     }
 
     _getConfig(config) {
-      const elementData = $(this._element).data()
-      if (elementData.placement !== undefined) {
-        elementData.placement = AttachmentMap[elementData.placement.toUpperCase()]
-      }
-
       config = $.extend(
         {},
         this.constructor.Default,
@@ -242,21 +227,51 @@ const Dropdown = (($) => {
 
     _getPlacement() {
       const $parentDropdown = $(this._element).parent()
-      let placement = this._config.placement
+      let placement = AttachmentMap.BOTTOM
 
       // Handle dropup
-      if ($parentDropdown.hasClass(ClassName.DROPUP) || this._config.placement === AttachmentMap.TOP) {
+      if ($parentDropdown.hasClass(ClassName.DROPUP)) {
         placement = AttachmentMap.TOP
         if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
           placement = AttachmentMap.TOPEND
         }
-      }
-      else {
-        if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
-          placement = AttachmentMap.BOTTOMEND
-        }
+      } else if ($(this._menu).hasClass(ClassName.MENURIGHT)) {
+        placement = AttachmentMap.BOTTOMEND
       }
       return placement
+    }
+
+    _detectNavbar() {
+      return $(this._element).closest('.navbar').length > 0
+    }
+
+    _getPopperConfig() {
+      const offsetConf = {}
+      if (typeof this._config.offset === 'function') {
+        offsetConf.fn = (data) => {
+          data.offsets = $.extend({}, data.offsets, this._config.offset(data.offsets) || {})
+          return data
+        }
+      } else {
+        offsetConf.offset = this._config.offset
+      }
+      const popperConfig = {
+        placement : this._getPlacement(),
+        modifiers : {
+          offset : offsetConf,
+          flip : {
+            enabled : this._config.flip
+          }
+        }
+      }
+
+      // Disable Popper.js for Dropdown in Navbar
+      if (this._inNavbar) {
+        popperConfig.modifiers.applyStyle = {
+          enabled: !this._inNavbar
+        }
+      }
+      return popperConfig
     }
 
     // static
@@ -272,7 +287,7 @@ const Dropdown = (($) => {
         }
 
         if (typeof config === 'string') {
-          if (data[config] === undefined) {
+          if (typeof data[config] === 'undefined') {
             throw new Error(`No method named "${config}"`)
           }
           data[config]()
@@ -430,6 +445,6 @@ const Dropdown = (($) => {
 
   return Dropdown
 
-})(jQuery)
+})($, Popper)
 
 export default Dropdown

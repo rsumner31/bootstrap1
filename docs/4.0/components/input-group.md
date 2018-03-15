@@ -8,7 +8,7 @@ toc: true
 
 ## Basic example
 
-Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group.**
+Place one add-on or button on either side of an input. You may also place one on both sides of an input. **We do not support multiple form-controls in a single input group** and `<label>`s must come outside the input group.
 
 {% example html %}
 <div class="input-group">
@@ -50,7 +50,7 @@ Add the relative form sizing classes to the `.input-group` itself and contents w
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon1">
 </div>
 <br>
-<div class="input-group">
+<div class="input-group input-group-sm">
   <span class="input-group-addon" id="sizing-addon2">@</span>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="sizing-addon2">
 </div>
@@ -123,7 +123,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
   </div>
   <div class="col-lg-6">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...>
+      <input type="text" class="form-control" placeholder="Search for..." aria-label="Search for...">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Go!</button>
       </span>
@@ -132,7 +132,7 @@ Buttons in input groups must wrapped in a `.input-group-btn` for proper alignmen
 </div>
 <br>
 <div class="row">
-  <div class="col-lg-offset-3 col-lg-6">
+  <div class="col-lg-6 offset-lg-3">
     <div class="input-group">
       <span class="input-group-btn">
         <button class="btn btn-secondary" type="button">Hate it</button>

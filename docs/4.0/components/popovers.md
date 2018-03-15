@@ -11,8 +11,9 @@ toc: true
 Things to know when using the popover plugin:
 
 
-- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org) for positioning. You must include [popper.min.js](https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.9.9/umd/popper.min.js) before bootstrap.js in order for popovers to work!
+- Popovers rely on the 3rd party library [Popper.js](https://popper.js.org/) for positioning. You must include [popper.min.js]({{ site.cdn.popper }}) before bootstrap.js or use `bootstrap.bundle.min.js` / `bootstrap.bundle.js` which contains Popper.js in order for popovers to work!
 - Popovers require the [tooltip plugin]({{ site.baseurl }}/docs/{{ site.docs_version }}/components/tooltips/) as a dependency.
+- If building our JS from source, it [requires `util.js`]({{ site.baseurl }}/docs/{{ site.docs_version }}/getting-started/javascript/#util).
 - Popovers are opt-in for performance reasons, so **you must initialize them yourself**.
 - Zero-length `title` and `content` values will never show a popover.
 - Specify `container: 'body'` to avoid rendering problems in more complex components (like our input groups, button groups, etc).
@@ -52,32 +53,32 @@ Four options are available: top, right, bottom, and left aligned.
 <div class="bd-example bd-example-popover-static">
   <div class="popover bs-popover-top bs-popover-top-docs">
     <div class="arrow"></div>
-    <h3 class="popover-title">Popover top</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover top</h3>
+    <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
   <div class="popover bs-popover-right bs-popover-right-docs">
     <div class="arrow"></div>
-    <h3 class="popover-title">Popover right</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover right</h3>
+    <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
   <div class="popover bs-popover-bottom bs-popover-bottom-docs">
     <div class="arrow"></div>
-    <h3 class="popover-title">Popover bottom</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover bottom</h3>
+    <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
 
   <div class="popover bs-popover-left bs-popover-left-docs">
     <div class="arrow"></div>
-    <h3 class="popover-title">Popover left</h3>
-    <div class="popover-content">
+    <h3 class="popover-header">Popover left</h3>
+    <div class="popover-body">
       <p>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
     </div>
   </div>
@@ -150,7 +151,6 @@ $('.popover-dismiss').popover({
 {% endhighlight %}
 
 
-
 ## Usage
 
 Enable popovers via JavaScript:
@@ -179,7 +179,7 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>container</td>
-      <td>string | false</td>
+      <td>string | element | false</td>
       <td>false</td>
       <td>
         <p>Appends the popover to a specific element. Example: <code>container: 'body'</code>. This option is particularly useful in that it allows you to position the popover in the flow of the document near the triggering element - which will prevent the popover from floating away from the triggering element during a window resize.</p>
@@ -221,18 +221,18 @@ Options can be passed via data attributes or JavaScript. For data attributes, ap
     </tr>
     <tr>
       <td>selector</td>
-      <td>string</td>
+      <td>string | false</td>
       <td>false</td>
       <td>If a selector is provided, popover objects will be delegated to the specified targets. In practice, this is used to enable dynamic HTML content to have popovers added. See <a href="https://github.com/twbs/bootstrap/issues/4215">this</a> and <a href="https://jsbin.com/zopod/1/edit">an informative example</a>.</td>
     </tr>
     <tr>
       <td>template</td>
       <td>string</td>
-      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-title"&gt;&lt;/h3&gt;&lt;div class="popover-content"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
+      <td><code>'&lt;div class="popover" role="tooltip"&gt;&lt;div class="arrow"&gt;&lt;/div&gt;&lt;h3 class="popover-header"&gt;&lt;/h3&gt;&lt;div class="popover-body"&gt;&lt;/div&gt;&lt;/div&gt;'</code></td>
       <td>
         <p>Base HTML to use when creating the popover.</p>
-        <p>The popover's <code>title</code> will be injected into the <code>.popover-title</code>.</p>
-        <p>The popover's <code>content</code> will be injected into the <code>.popover-content</code>.</p>
+        <p>The popover's <code>title</code> will be injected into the <code>.popover-header</code>.</p>
+        <p>The popover's <code>content</code> will be injected into the <code>.popover-body</code>.</p>
         <p><code>.arrow</code> will become the popover's arrow.</p>
         <p>The outermost wrapper element should have the <code>.popover</code> class.</p>
       </td>
@@ -305,7 +305,6 @@ Toggles an element's popover. **Returns to the caller before the popover has act
 
 Hides and destroys an element's popover. Popovers that use delegation (which are created using [the `selector` option](#options)) cannot be individually destroyed on descendant trigger elements.
 
-
 {% highlight js %}$('#element').popover('dispose'){% endhighlight %}
 
 #### `.popover('enable')`
@@ -360,7 +359,7 @@ Updates the position of an element's popover.
     </tr>
     <tr>
       <td>inserted.bs.popover</td>
-      <td>This event is fired after the <code>show.bs.popover</code> event when the tooltip template has been added to the DOM.</td>
+      <td>This event is fired after the <code>show.bs.popover</code> event when the popover template has been added to the DOM.</td>
     </tr>
   </tbody>
 </table>
