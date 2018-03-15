@@ -38,12 +38,15 @@ Thumbs.db
 .komodotools
 *.komodoproject
 
-# Jekyll metadata and extra config file for `github` script
+# SCSS-Lint
+scss-lint-report.xml
+
+# grunt-contrib-sass cache
+.sass-cache
+
+# Jekyll metadata
 docs/.jekyll-metadata
-twbsconfig.yml
 
 # Folders to ignore
+bower_components
 node_modules
-
-# node
-package-lock.json

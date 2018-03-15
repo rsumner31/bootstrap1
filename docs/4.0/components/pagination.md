@@ -105,10 +105,14 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav aria-label="...">
   <ul class="pagination pagination-lg">
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">1</a>
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
@@ -117,17 +121,21 @@ Fancy larger or smaller pagination? Add `.pagination-lg` or `.pagination-sm` for
 <nav aria-label="...">
   <ul class="pagination pagination-sm">
     <li class="page-item disabled">
-      <a class="page-link" href="#" tabindex="-1">1</a>
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
     </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
     <li class="page-item"><a class="page-link" href="#">2</a></li>
     <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
   </ul>
 </nav>
 {% endexample %}
 
 ## Alignment
 
-Change the alignment of pagination components with [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flex/).
+Change the alignment of pagination components with [flexbox utilities]({{ site.baseurl }}/docs/{{ site.docs_version }}/utilities/flexbox/).
 
 {% example html %}
 <nav aria-label="Page navigation example">

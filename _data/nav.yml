@@ -5,9 +5,9 @@
     - title: Contents
     - title: Browsers & devices
     - title: JavaScript
-    - title: Theming
+    - title: Options
     - title: Build tools
-    # - title: Best practices # TODO: Write this content
+    - title: Best practices
     - title: Webpack
     - title: Accessibility
 
@@ -58,28 +58,28 @@
     - title: Close icon
     - title: Colors
     - title: Display
-    - title: Embed
-    - title: Flex
-    - title: Float
+    - title: Flexbox
     - title: Image replacement
     - title: Position
+    - title: Responsive helpers
     - title: Screenreaders
     - title: Sizing
     - title: Spacing
-    - title: Text
+    - title: Typography
     - title: Vertical align
     - title: Visibility
 
 - title: Extend
   pages:
-    - title: Approach
+    # - title: Approach
     - title: Icons
 
-- title: Migration
+# - title: About
+#   pages:
+#     - title: History
+#     - title: Team
+#     - title: Brand
+#     - title: License
+#     - title: Translations
 
-- title: About
-  pages:
-    - title: Overview
-    - title: Brand
-    - title: License
-    - title: Translations
+- title: Migration
